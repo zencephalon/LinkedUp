@@ -1,5 +1,8 @@
 "use strict";
 
+process.env.BABEL_ENV = "development";
+process.env.NODE_ENV = "development";
+
 const autoprefixer = require("autoprefixer");
 const path = require("path");
 const webpack = require("webpack");
@@ -29,9 +32,9 @@ const env = getClientEnvironment(publicUrl);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
-if (env.stringified["process.env"].NODE_ENV !== '"production"') {
-  throw new Error("Production builds must have NODE_ENV=production.");
-}
+// if (env.stringified["process.env"].NODE_ENV !== '"production"') {
+//   throw new Error("Production builds must have NODE_ENV=production.");
+// }
 
 // Note: defined here because it will be used more than once.
 // ORIGINAL const cssFilename = 'static/css/[name].[contenthash:8].css';
@@ -233,7 +236,7 @@ module.exports = {
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
     // in `package.json`, in which case it will be the pathname of that URL.
-    new ExtensionReloader(),
+    // new ExtensionReloader(),
     new InterpolateHtmlPlugin(env.raw),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({

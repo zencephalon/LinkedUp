@@ -10,7 +10,6 @@ const App = () => {
         <h2>Welcome to LinkedUp</h2>
       </div>
       <MemberList />
-      <EditProfile />
     </div>
   );
 };
