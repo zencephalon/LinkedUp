@@ -8,7 +8,7 @@ class MemberList extends Component {
   }
 
   componentDidMount() {
-    chrome.runtime.sendMessage({ greeting: "hello" }, response => {
+    chrome.runtime.sendMessage({ requestId: "ListMembers" }, response => {
       console.log(response);
       this.setState({ members: response });
     });
