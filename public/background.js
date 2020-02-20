@@ -10,19 +10,25 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       // PATCH request
       fetch(`${baseUrl}/profile/${request.params.id}`, {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(request.payload)
       }).then(() => sendResponse("Profile updated"));
     } else {
       console.log("Creating", request);
       // Create new
-      fetch(`${baseUrl}/profiles/`, {
+      fetch(`${baseUrl}/profiles`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(request.payload)
       }).then(() => sendResponse("Profile created"));
     }
   } else if (request.requestId === "GetProfile") {
     console.log("FETCHING: " + request.params.id);
-    fetch(`${baseUrl}/profiles/${request.params.id}`)
+    fetch(`${baseUrl}/profile/${request.params.id}`)
       .then(resp => resp.json())
       .then(res => {
         console.log(res);
