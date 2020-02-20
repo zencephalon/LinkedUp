@@ -1,10 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "React Content Script",
+  "name": "Linked in Dating",
   "version": "0.1",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/"],
+      "matches": ["https://www.linkedin.com/feed/"],
       "css": ["/static/css/main.css"],
       "js": ["/static/js/main.js"]
     }

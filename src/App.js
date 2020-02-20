@@ -1,17 +1,23 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+  clickMe = () => {
+    chrome.runtime.sendMessage({ greeting: "hello" }, function(response) {
+      console.log(response);
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src="https://facebook.github.io/react/img/logo.svg" className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to LinkedUp</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          See the following LinkedIn members who have opted-in to dating.
         </p>
+        <button onClick={this.clickMe}>Click me</button>
       </div>
     );
   }
