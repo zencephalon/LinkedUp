@@ -25,7 +25,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       .then(res => {
         console.log(res);
         return sendResponse(res);
-      });
+      })
+      .catch(e => sendResponse(null));
   } else if (request.requestId === "ListMembers") {
     fetch(`${baseUrl}/profiles`)
       .then(resp => resp.json())

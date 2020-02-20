@@ -74,35 +74,37 @@ export default class EditProfile extends Component {
   };
 
   render() {
-    if (this.state.loading) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Tagline:
-              <input
-                type="text"
-                name="tagline"
-                value={this.state.tagline}
-                onChange={this.handleTaglineChange}
-              />
-            </label>
+    return (
+      <div className="EditProfile">
+        {this.state.loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Tagline:
+                <input
+                  type="text"
+                  name="tagline"
+                  value={this.state.tagline}
+                  onChange={this.handleTaglineChange}
+                />
+              </label>
 
-            <label>
-              Relationship Status:
-              <input
-                type="text"
-                name="relationship_status"
-                value={this.state.relationship_status}
-                onChange={this.handleRelationshipStatusChange}
-              />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
-      );
-    }
+              <label>
+                Relationship Status:
+                <input
+                  type="text"
+                  name="relationship_status"
+                  value={this.state.relationship_status}
+                  onChange={this.handleRelationshipStatusChange}
+                />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        )}
+      </div>
+    );
   }
 }
