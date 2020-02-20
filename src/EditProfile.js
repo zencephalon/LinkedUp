@@ -1,7 +1,15 @@
 import React, { Component } from "react"
 
 
-export default class EditProfile extends Component {    
+export default class EditProfile extends Component { 
+    
+    componentDidMount() {
+        chrome.runtime.sendMessage({ requestId: "EditStatus", params: { id: "1" }, payload: { name: "NewName" } }, response => {
+          console.log(response);
+        });
+      }
+
+
     render() {
         const parts = document.querySelector(".feed-identity-module__actor-meta")
         .querySelector("a")
@@ -9,7 +17,7 @@ export default class EditProfile extends Component {
 
         var userId = parts.pop() || parts.pop();
 
-        
+
         return (<div>userId</div>);
     }
 }
