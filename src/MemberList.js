@@ -27,10 +27,10 @@ class MemberList extends Component {
                 <div>
                   <a href={`https://linkedin.com/in/${member.id}`}>
                     {member.name}
-                  </a>
+                  </a>{" "}
+                  - {member.relationship_status}
                 </div>
-                <div>{member.tagline}</div>
-                <div>{member.relationship_status}</div>
+                <p>{member.tagline}</p>
               </div>
             ))}
       </div>
