@@ -58,11 +58,17 @@ export default class EditProfile extends Component {
 
   handleSubmit = event => {
     console.log("Trying to handle submit");
-    const { name, tagline, relationship_status, userId } = this.state;
+    const {
+      name,
+      tagline,
+      relationship_status,
+      userId,
+      profileExists
+    } = this.state;
     chrome.runtime.sendMessage(
       {
         requestId: "EditProfile",
-        params: { id: userId },
+        params: { id: userId, profileExists },
         payload: { name, tagline, relationship_status, id: userId }
       },
       response => {
