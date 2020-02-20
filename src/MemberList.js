@@ -18,7 +18,7 @@ class MemberList extends Component {
     return (
       <div className="MemberList">
         <p className="App-intro">
-          See the following LinkedIn members who have opted-in to dating.
+          The following LinkedIn members have opted-in to dating:
         </p>
         {this.state.members.length === 0
           ? "Loading..."
