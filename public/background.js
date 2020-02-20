@@ -31,10 +31,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     fetch(`${baseUrl}/profile/${request.params.id}`)
       .then(resp => resp.json())
       .then(res => {
-        console.log(res);
-        return sendResponse(res);
-      })
-      .catch(e => sendResponse(""));
+        console.log("Got response", res);
+        if (res.detail !== "Not found.") {
+          return sendResponse(res);
+        } else {
+          return sendResponse("");
+        }
+      });
   } else if (request.requestId === "ListMembers") {
     fetch(`${baseUrl}/profiles`)
       .then(resp => resp.json())
