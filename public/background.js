@@ -4,19 +4,21 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   console.log("REQUEST: " + request);
 
   if (request.requestId === "EditProfile") {
-    sendResponse("PROFILE EDITED");
+    // sendResponse("PROFILE EDITED");
     if (request.params.profileExists) {
+      console.log("Updating", request);
       // PATCH request
       fetch(`${baseUrl}/profile/${request.params.id}`, {
         method: "PATCH",
         body: JSON.stringify(request.payload)
-      });
+      }).then(() => sendResponse("Profile updated"));
     } else {
+      console.log("Creating", request);
       // Create new
       fetch(`${baseUrl}/profiles/`, {
         method: "POST",
         body: JSON.stringify(request.payload)
-      });
+      }).then(() => sendResponse("Profile created"));
     }
   } else if (request.requestId === "GetProfile") {
     console.log("FETCHING: " + request.params.id);
