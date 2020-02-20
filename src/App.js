@@ -9,6 +9,7 @@ const App = () => {
       <div className="App-header">
         <h2>Welcome to LinkedUp</h2>
       </div>
+      <EditProfile />
       <MemberList />
     </div>
   );
