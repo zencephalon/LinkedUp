@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Linked in Dating",
+  "name": "LinkedUp Dating",
   "version": "0.1",
   "background": {
     "scripts": ["background.js"],
